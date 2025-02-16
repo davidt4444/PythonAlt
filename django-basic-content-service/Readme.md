@@ -39,8 +39,14 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 python3 -m pip install mysqlclient --break-system-packages
 
 ### extra database config
-If you haven't already done this, run the sql in gen_code/DJPost.sql to create the table in pythonbase.
+At this point, you may feel tempted to run the sql in gen_code/DJPost.sql 
+to create the table in pythonbase. It is actually better to do it after the 
+next steps in the migrations, which will handle it for you. 
+You just have to put this in your models.py class.
+    class Meta:
+        db_table = 'posts_DJPost'
 
+Next, install python-dotenv
 python3 -m pip install python-dotenv --break-system-packages
  Add this to settings.py in the databases spot
  dotenv_path = os.path.join('../../../aws-resources/', 'localhost-mac.env') 
